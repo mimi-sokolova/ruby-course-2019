@@ -1,5 +1,5 @@
 # Method returns the constant 4 for any input parameter.
-def f_c(x)
+def f_c(x=nil)
   return 4
 end
 
