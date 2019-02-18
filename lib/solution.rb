@@ -1,11 +1,10 @@
 # Method returns the constant 4 for any input parameter.
 def f_c(x)
-  $c = 4
-  return $c
+  return 4
 end
 
 # Method calculate the formula f(x) = a*x + b
-def f_x(x, a, b)
+public def f_x(x, a, b)
 f = (x*a)+b
   return f
 end
@@ -14,7 +13,7 @@ end
 def sum(x)
   sum = 0
   for i in 1..3 do
-sum = sum + self.f_c(x, i,i)
+sum = sum + self.f_x(x, i,i)
   end
   return sum
 end
