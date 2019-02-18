@@ -13,7 +13,7 @@ end
 def sum(x)
   sum = 0
   for i in 1..3 do
-sum = sum + self.f_x(x, i,i)
+sum = sum + f_x(x, i,i)
   end
   return sum
 end
