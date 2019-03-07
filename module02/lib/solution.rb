@@ -3,18 +3,19 @@ IS_FALSE = false
 PANCAKE_INGREDIENTS = {'flour' => 2, 'eggs' => 4, 'milk' => 200, 'butter' => false, 'salt' => 0.001}
 FIBONACCI_NUMBERS = [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144]
 
+# Method is adding a and b
 def num_add(a, b)
   a + b
 end
-
+# Method is subtracts a and b
 def num_sub(a, b)
   a - b
 end
-
+# Method is multiplies a and b
 def num_mul(a, b)
   a * b
 end
-
+# Method divides a to b
 def num_div(a, b)
   if b.zero?
     puts 'b is zero! You can not dived by zero!'
@@ -72,4 +73,27 @@ end
 
 def which_fib(arr, n)
   arr.index(n)+1
+end
+
+def digits_to_array(digit)
+digit.to_s.split(//)
+end
+
+def digits_to_array_reversed (digit)
+  digit.to_s.split(//).reverse
+end
+
+def grayslace_histogram(image)
+
+for i in (image)
+  puts i
+  arr = arr.concat(i)
+end
+end
+
+
+# grayslace_histogram([[1,2,5,5,5,5]])
+
+def max_span(list)
+
 end
