@@ -36,7 +36,6 @@ def count_vowels(str)
   count = 0
   for i in (0..l) do
     if vowels.include?(array[i].to_s)
-      #array[i].to_s == "a" or array[i].to_s == "e" or array[i].to_s == "i" or array[i].to_s == "o" or array[i].to_s == "u" or array[i].to_s == "y"
       count += 1
     end
   end
