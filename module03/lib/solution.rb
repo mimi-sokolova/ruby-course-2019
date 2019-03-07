@@ -58,18 +58,44 @@ def count_consonants(str)
 end
 
 def prime_number(number)
+  is_prime = false
+  if number==1 || number==2
+    is_prime = true
+  elsif
+    for i in (2..(number-1))
+      if number % i > 0 || number/i > 1
+      is_prime = false
 
+    end
+  end
+  return is_prime
+end
 end
 
 def fact_digits(n)
+  array= to_digits(n)
+  sum = 0
+  x=[]
+  for i in (0..(array.length.to_i-1))
+    x.append(1)
+    for y in (1..array[i])
+      x[i] *= y
+    end
+  end
+  for i in ((0..(x.length.to_i-1)))
+    sum += x[i]
+  end
+  return sum
 
-end
+
+  end
 
 def fibonacci(n)
 
 end
 
 def fib_number(n)
+
 
 end
 
