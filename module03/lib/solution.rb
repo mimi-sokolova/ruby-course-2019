@@ -24,14 +24,15 @@ def to_number(digits)
   digits = digits.reverse
   number =0
   for i in (0..l) do
-    number += digits[i].to_i * (10^i)
+    number += digits[i].to_i * (10**i)
   end
   return number
 end
 
 def count_vowels(str)
+  str = str.downcase
   array = str.split(//)
-  l = array.length
+  l = (array.length.to_i) -1
   vowels = "aeiouy"
   count = 0
   for i in (0..l) do
@@ -43,7 +44,17 @@ def count_vowels(str)
 end
 
 def count_consonants(str)
-
+  str = str.downcase
+  array = str.split(//)
+  l = (array.length.to_i) -1
+  vowels = "bcdfghjklmnpqrstvwxz"
+  count = 0
+  for i in (0..l) do
+    if vowels.include?(array[i].to_s)
+      count += 1
+    end
+  end
+  return count
 end
 
 def prime_number(number)
