@@ -56,14 +56,7 @@ def prime_number(number)
   primes = [2,3,5,7]
   if number==1 || number==2
     is_prime = true
-  elsif
-    for i in (primes.length-1)
-      if number % primes[i] > 0 || number/i > 1
-      is_prime = true
 
-    end
-  end
-  return is_prime
 end
 end
 
@@ -100,12 +93,6 @@ def palindrome(n)
 end
 
 def char_histogram(string)
-  hash = {}
   array = string.split(//)
-
-  for i in (0 ..(array.length-1))
-    count = string.
-    bash = {:array[i] => count}
-  end
-
+  array.uniq.map { |x| [x, array.count(x)] }.to_h
 end
