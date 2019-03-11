@@ -11,22 +11,16 @@ end
 def to_digits(n)
 array = []
 n_abs = n.abs
-while n_abs >= 10
+ while n_abs >= 10
   array.append(n_abs % 10)
   n_abs = n_abs/10
-end
+ end
   array.append(n_abs)
   return array.reverse
 end
 
 def to_number(digits)
-  l = digits.length
-  digits = digits.reverse
-  number =0
-  for i in (0..l) do
-    number += digits[i].to_i * (10**i)
-  end
-  return number
+  digits.join.to_i
 end
 
 def count_vowels(str)
@@ -59,12 +53,13 @@ end
 
 def prime_number(number)
   is_prime = false
+  primes = [2,3,5,7]
   if number==1 || number==2
     is_prime = true
   elsif
-    for i in (2..(number-1))
-      if number % i > 0 || number/i > 1
-      is_prime = false
+    for i in (primes.length-1)
+      if number % primes[i] > 0 || number/i > 1
+      is_prime = true
 
     end
   end
@@ -86,23 +81,31 @@ def fact_digits(n)
     sum += x[i]
   end
   return sum
-
-
-  end
+end
 
 def fibonacci(n)
-
+  fib_array = [1,1]
+  for i in (2..n)
+    fib_array[i] = (fib_array[i-1].to_i)+(fib_array[i-2].to_i)
+  end
+  return fib_array.take(n)
 end
 
 def fib_number(n)
-
-
+  to_number(fibonacci(n))
 end
 
 def palindrome(n)
-
+  n.to_s == n.to_s.reverse
 end
 
 def char_histogram(string)
+  hash = {}
+  array = string.split(//)
+
+  for i in (0 ..(array.length-1))
+    count = string.
+    bash = {:array[i] => count}
+  end
 
 end
