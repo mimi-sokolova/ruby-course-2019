@@ -75,25 +75,3 @@ def which_fib(arr, n)
   arr.index(n)+1
 end
 
-def digits_to_array(digit)
-digit.to_s.split(//)
-end
-
-def digits_to_array_reversed (digit)
-  digit.to_s.split(//).reverse
-end
-
-def grayslace_histogram(image)
-
-for i in (image)
-  puts i
-  arr = arr.concat(i)
-end
-end
-
-
-# grayslace_histogram([[1,2,5,5,5,5]])
-
-def max_span(list)
-
-end
