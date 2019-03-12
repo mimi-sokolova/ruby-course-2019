@@ -52,12 +52,8 @@ def count_consonants(str)
 end
 
 def prime_number(number)
-  is_prime = false
-  primes = [2,3,5,7]
-  if number==1 || number==2
-    is_prime = true
-
-end
+    Math.sqrt(number).to_i.downto(2).each {|i| return false if number % i == 0}
+    true
 end
 
 def fact_digits(n)
