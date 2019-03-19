@@ -1,21 +1,20 @@
 def sum_of_digits(n)
   n_abs = n.abs
   sum = 0
-  while n_abs >= 10
+  while n_abs > 0
     sum += n_abs % 10
     n_abs = n_abs/10
   end
-return sum+n_abs
+return sum
 end
 
 def to_digits(n)
 array = []
 n_abs = n.abs
- while n_abs >= 10
+ while n_abs > 0
   array.append(n_abs % 10)
   n_abs = n_abs/10
  end
-  array.append(n_abs)
   return array.reverse
 end
 
@@ -25,12 +24,11 @@ end
 
 def count_vowels(str)
   str = str.downcase
-  array = str.split(//)
-  l = (array.length.to_i) -1
+  l = (str.length) -1
   vowels = "aeiouy"
   count = 0
   for i in (0..l) do
-    if vowels.include?(array[i].to_s)
+    if vowels.include?(str[i])
       count += 1
     end
   end
@@ -39,12 +37,10 @@ end
 
 def count_consonants(str)
   str = str.downcase
-  array = str.split(//)
-  l = (array.length.to_i) -1
   vowels = "bcdfghjklmnpqrstvwxz"
   count = 0
-  for i in (0..l) do
-    if vowels.include?(array[i].to_s)
+  for i in (0..str.length-1) do
+    if vowels.include?(str[i])
       count += 1
     end
   end
@@ -52,30 +48,35 @@ def count_consonants(str)
 end
 
 def prime_number(number)
-    Math.sqrt(number).to_i.downto(2).each {|i| return false if number % i == 0}
-    true
+  for i in (2..number / 2)
+    if number % i == 0
+      return false
+    end
+  end
+  return true
+end
+
+def fact(n)
+  y = 1
+  n.downto(2) {|i| y *= i}
+  return y
 end
 
 def fact_digits(n)
-  array= to_digits(n)
+
+  array = to_digits(n)
   sum = 0
-  x=[]
-  for i in (0..(array.length.to_i-1))
-    x.append(1)
-    for y in (1..array[i])
-      x[i] *= y
-    end
-  end
-  for i in ((0..(x.length.to_i-1)))
-    sum += x[i]
-  end
+  array.each {|z| sum += fact(z)}
+
   return sum
 end
 
 def fibonacci(n)
   fib_array = [1,1]
+
+  n.each { |i| }
   for i in (2..n)
-    fib_array[i] = (fib_array[i-1].to_i)+(fib_array[i-2].to_i)
+    fib_array[i] = (fib_array[i-1])+(fib_array[i-2])
   end
   return fib_array.take(n)
 end
