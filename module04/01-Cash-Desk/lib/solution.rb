@@ -27,7 +27,6 @@ end
 class BatchBill
 
   def initialize(bills)
-    @sum = 0
     @bills = Hash.new(0)
   end
 
@@ -37,8 +36,12 @@ class BatchBill
 
   def total
     sum = 0
-    @bills.each{|bill| sum += bill.amount}
+    @array.each {|a| sum += a.amount}
     return sum
+  end
+
+  def each(&block)
+    @array.each(&block)
   end
 
 end
