@@ -33,6 +33,3 @@ batch = BatchBill.new(bills)
 for bill in batch
   puts bill
 end
-
-# read more about proc
-# ключова дума yield

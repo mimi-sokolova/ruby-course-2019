@@ -53,6 +53,7 @@ class BatchBill
 end
 
 class CashDesk
+
   def initialize()
     @cash = Hash.new(0)
   end
