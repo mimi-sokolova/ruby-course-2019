@@ -27,7 +27,7 @@ end
 class BatchBill
 
   def initialize(bills)
-    @bills = Hash.new(0)
+    @bills = bills
   end
 
   def length
@@ -36,27 +36,37 @@ class BatchBill
 
   def total
     sum = 0
-    @array.each {|a| sum += a.amount}
+    @bills.each {|a| sum += a.amount}
+
     return sum
   end
 
   def each(&block)
-    @array.each(&block)
+    @bills.each(&block)
+  end
+
+
+  def include?(b)
+    @bills.include?(b)
   end
 
 end
 
 class CashDesk
   def initialize()
-    @cash = []
+    @cash = Hash.new(0)
   end
 
   def take_money(money)
-      @cash.push(money)
+    if money.is_a?(BatchBill)
+      money.each {|m| @cash[m.amount] += 1}
+    else
+      @cash[money.amount] += 1
+    end
   end
 
   def total
-
+    total = 0
     @cash.each do |bills|
       if bills.is_a?(Bill)
         total += bills.amount
@@ -67,9 +77,9 @@ class CashDesk
   end
 
   def inspect
-    @cash
 
   end
+
 end
 
 
