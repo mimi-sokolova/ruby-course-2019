@@ -1,6 +1,7 @@
 class BankAccount
 
   def initialize(name, balance, currency)
+
     if balance < 0
       raise ArgumentError.new("Account balance can't be negative")
     end
@@ -11,10 +12,14 @@ class BankAccount
     @balance = balance
     @currency = currency
     @history = ["Account was created"]
+  end
 
+  def currency
+    @currency
   end
 
   def deposit(amount)
+
     if amount < 0
       raise ArgumentError.new("You can not deposit a negative number")
     end
@@ -28,6 +33,7 @@ class BankAccount
   end
 
   def withdraw(amount)
+
     if amount > @balance
       @history.append("Withdraw for #{amount}#{@currency} failed.")
       return false
