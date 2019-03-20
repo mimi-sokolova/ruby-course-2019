@@ -23,7 +23,7 @@ def to_number(digits)
   for i in (0...digits.length)
     n = digits[i] + (n * 10)
   end
-  return
+  return n
 end
 
 def count_vowels(str)
@@ -85,7 +85,8 @@ def fibonacci(n)
 end
 
 def fib_number(n)
-  to_number(fibonacci(n))
+  fib = fibonacci(n).map {|x| x.split(//) }
+  to_number(fib)
 end
 
 def palindrome(m)
