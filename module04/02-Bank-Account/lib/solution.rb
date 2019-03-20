@@ -4,12 +4,13 @@ class BankAccount
     if balance < 0
       raise ArgumentError.new("Account balance can't be negative")
     end
-    if currency.nil?
-      raise ArgumentError.new("You can not have a acount without currency")
+    if currency == ""
+      raise ArgumentError.new("You can not have a account without currency")
     end
     @name = name
     @balance = balance
     @currency = currency
+    @history = ["Account was created"]
 
   end
 
@@ -17,18 +18,22 @@ class BankAccount
     if amount < 0
       raise ArgumentError.new("You can not deposit a negative number")
     end
-    @balance +=amount
+    @history.append("Deposited #{amount}#{@currency}")
+    @balance += amount
   end
 
   def balance
+    @history.append("Balance check -> #{@balance}#{@currency}")
     @balance
   end
 
   def withdraw(amount)
     if amount > @balance
+      @history.append("Withdraw for #{amount}#{@currency} failed.")
       return false
     else
-      @balance -=amount
+      @balance -= amount
+      @history.append("#{amount}#{@currency} was withdrawn")
       return true
     end
 
@@ -38,4 +43,15 @@ class BankAccount
     "Bank account for #{@name} with balance of #{@balance}#{@currency}"
   end
 
+  def history
+    @history
+  end
+
+  def transfer_to(account, amount)
+
+  end
+
 end
+
+account = BankAccount.new("Rado", 0, "$")
+account.deposit(1000)
