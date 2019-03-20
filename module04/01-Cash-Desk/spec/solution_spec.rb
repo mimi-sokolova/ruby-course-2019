@@ -1,4 +1,4 @@
-require 'solution'
+require '../../../module04/01-Cash-Desk/lib/solution-cashdesk'
 
 describe 'Cash Desk solution' do
     before(:context) do

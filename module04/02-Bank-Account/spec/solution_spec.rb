@@ -1,4 +1,4 @@
-require 'solution'
+require '../../../module04/02-Bank-Account/lib/solution-backaccount'
 
 describe BankAccount do
     before(:example) do
