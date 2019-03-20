@@ -14,6 +14,10 @@ class BankAccount
     @history = ["Account was created"]
   end
 
+  def name
+    @name
+  end
+
   def currency
     @currency
   end
@@ -63,6 +67,8 @@ class BankAccount
 
     self.withdraw(amount)
     account.deposit(amount)
+    @history.append("Transfer to #{account.name} for #{amount}#{@currency}")
+    account.history.append("Transfer from #{@name} for #{amount}#{@currency}")
     return true
 
   end
