@@ -48,10 +48,18 @@ class BankAccount
   end
 
   def transfer_to(account, amount)
+    if account.currency != @currency
+      return false
+    end
+    if @balance < amount
+      return false
+    end
+
+    self.withdraw(amount)
+    account.deposit(amount)
+    return true
 
   end
 
 end
 
-account = BankAccount.new("Rado", 0, "$")
-account.deposit(1000)
