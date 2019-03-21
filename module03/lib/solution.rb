@@ -85,8 +85,13 @@ def fibonacci(n)
 end
 
 def fib_number(n)
-  fib = fibonacci(n).map {|x| x.split(//) }
-  to_number(fib)
+  $a = 0
+  fib = (fibonacci(n).map{|x| x = to_digits(x)}).flatten
+  for i in (0...fib.length)
+    $a = fib[i] + ($a * 10)
+  end
+
+  return $a
 end
 
 def palindrome(m)
@@ -97,9 +102,9 @@ def palindrome(m)
       return false
     end
   end
+
   return true
 end
-
 
 def char_histogram(string)
   array = string.split(//)
