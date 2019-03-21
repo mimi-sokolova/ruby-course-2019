@@ -61,9 +61,6 @@ class BankAccount
     if account.currency != @currency
       return false
     end
-    if @balance < amount
-      return false
-    end
 
     self.withdraw(amount)
     account.deposit(amount)
