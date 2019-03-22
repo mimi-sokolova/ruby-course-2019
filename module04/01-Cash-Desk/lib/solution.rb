@@ -59,6 +59,9 @@ class CashDesk
   end
 
   def take_money(money)
+    if (money.is_a?(Bill) || money.is_a?(BatchBill)) == false
+      raise ArgumentError.new("should be from Bill or BatchBill class")
+    end
     if money.is_a?(BatchBill)
       money.each {|m| @cash[m.amount] += 1}
     else
@@ -68,17 +71,16 @@ class CashDesk
 
   def total
     total = 0
-    @cash.each do |bills|
-      if bills.is_a?(Bill)
-        total += bills.amount
-        else total += bills.each{|bill| total += bill.amount}
-      end
-    end
+    @cash.each_pair {|k, v| total += k * v}
     return total
   end
 
   def inspect
-
+    total_str = "We have a total of #{self.total}$ in the desk\n"
+    explanation_str = "We have the following count of bills, sorted in ascending order:\n"
+    detailed_info_str = ""
+    @cash.sort.to_h.each_pair {|k, v| detailed_info_str += "#{k}$ bills - #{v}\n"}
+    total_str + explanation_str + detailed_info_str.chomp
   end
 
 end

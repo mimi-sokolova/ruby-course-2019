@@ -1,4 +1,4 @@
-require '../../../module04/02-Bank-Account/lib/solution-backaccount'
+require '/Users/milenasokolova/RubymineProjects/ruby-course-2019/module04/02-Bank-Account/lib/solution-backaccount.rb'
 
 describe BankAccount do
     before(:example) do
