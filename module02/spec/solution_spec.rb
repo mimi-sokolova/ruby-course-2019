@@ -12,7 +12,7 @@ def test_pancake_ingredients()
     expect(PANCAKE_INGREDIENTS['butter']).to be false
 end
 
-describe 'solution.rb' do
+describe 'solution-cashflow.rb' do
     describe 'num_add' do
         it 'shoud add 2 numbers together' do
             expect(num_add(10, 200)).to eq(210)

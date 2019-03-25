@@ -1,6 +1,6 @@
 require 'solution'
 
-describe 'solution.rb' do
+describe 'solution-cashflow.rb' do
     describe 'f_c' do
         it 'should return 4' do
             expect(f_c()).to eq(4)

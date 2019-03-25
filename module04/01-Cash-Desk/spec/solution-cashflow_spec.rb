@@ -1,4 +1,4 @@
-require 'solution'
+require 'solution-cashflow.rb'
 
 describe 'Cash Desk solution' do
     before(:context) do

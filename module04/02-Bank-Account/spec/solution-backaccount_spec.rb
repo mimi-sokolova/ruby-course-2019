@@ -64,4 +64,27 @@ describe BankAccount do
         @account.deposit(22)
         expect(@account.to_s).to eq("Bank account for Rado with balance of 22$")
     end
+
+    it '.transfer_to() should work per specification' do
+        sender = BankAccount.new('sender', 1000 , "$")
+        reciever = BankAccount.new("Reciever", 0, "$")
+
+        expect(@account.to_s).to eq("Bank account for Rado with balance of 22$")
+    end
+
+    it '.transfer_to() with  different currencies ' do
+        sender = BankAccount.new('sender', 1000 , "%")
+        reciever = BankAccount.new("Reciever", 0, "$")
+
+        expect(@account.to_s).to eq("Bank account for Rado with balance of 22$")
+    end
+
+    it '.transfer_to() with not enough money for the transfergit  ' do
+
+    end
+
+    it '.transfer_to() with  different currencies ' do
+
+    end
+
 end

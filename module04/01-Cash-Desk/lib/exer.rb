@@ -1,4 +1,4 @@
-require './solution.rb'
+require './solution-cashflow.rb'
 
 a = Bill.new(10)
 b = Bill.new(5)
