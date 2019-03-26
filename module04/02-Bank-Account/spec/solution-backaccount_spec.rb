@@ -67,24 +67,34 @@ describe BankAccount do
 
     it '.transfer_to() should work per specification' do
         sender = BankAccount.new('sender', 1000 , "$")
-        reciever = BankAccount.new("Reciever", 0, "$")
 
-        expect(@account.to_s).to eq("Bank account for Rado with balance of 22$")
+        receiver = BankAccount.new("receiver", 0, "$")
+        sender.transfer_to(receiver,22)
+
+        expect(receiver.to_s).to eq("Bank account for receiver with balance of 22$")
+        expect(sender.history.last).to eq("Transfer to receiver for 22$")
     end
 
     it '.transfer_to() with  different currencies ' do
         sender = BankAccount.new('sender', 1000 , "%")
-        reciever = BankAccount.new("Reciever", 0, "$")
+        receiver = BankAccount.new("receiver", 0, "$")
 
-        expect(@account.to_s).to eq("Bank account for Rado with balance of 22$")
+        expect(sender.transfer_to(receiver,22)).to eq(false)
     end
 
-    it '.transfer_to() with not enough money for the transfergit  ' do
+    it '.transfer_to() with not enough money for the transfer' do
+        sender = BankAccount.new('sender', 10 , "%")
+        receiver = BankAccount.new("receiver", 0, "$")
 
+        expect(sender.transfer_to(receiver,22)).to eq(false)
     end
 
-    it '.transfer_to() with  different currencies ' do
+    it '.transfer_to() a negative transfer ' do
+        sender = BankAccount.new('sender', 10 , "%")
+        receiver = BankAccount.new("receiver", 0, "$")
 
+        expect(sender.transfer_to(receiver,-22)).to eq(false)
+        #expect(sender.history).to eq("Withdraw for -22$ failed.")
     end
 
 end
