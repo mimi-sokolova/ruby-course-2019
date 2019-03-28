@@ -62,13 +62,15 @@ class BankAccount
       return false
     end
 
-    self.withdraw(amount)
+    if self.withdraw(amount)
     account.deposit(amount)
     @history.append("Transfer to #{account.name} for #{amount}#{@currency}")
     account.history.append("Transfer from #{@name} for #{amount}#{@currency}")
     return true
+    else
+      return false
 
   end
-
+end
 end
 
