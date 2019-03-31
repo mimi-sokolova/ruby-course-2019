@@ -1,11 +1,11 @@
 def sum_of_digits(n)
-  n_abs = n.abs
   sum = 0
+  n_abs = n.abs
   while n_abs > 0
-    sum += n_abs % 10
-    n_abs = n_abs / 10
+    sum = n_abs % 10
+    n_abs /= 10
   end
-  return sum
+  sum
 end
 
 def to_digits(n)
@@ -13,9 +13,9 @@ def to_digits(n)
   n_abs = n.abs
   while n_abs > 0
     array.append(n_abs % 10)
-    n_abs = n_abs / 10
+    n_abs /= 10
   end
-  return array.reverse
+  array.reverse
 end
 
 def to_number(digits)
@@ -23,47 +23,41 @@ def to_number(digits)
   for i in (0...digits.length)
     n = digits[i] + (n * 10)
   end
-  return n
+  n
 end
 
 def count_vowels(str)
   str = str.downcase
-  l = (str.length) - 1
-  vowels = "aeiouy"
+  l = str.length - 1
+  vowels = 'aeiouy'
   count = 0
   for i in (0..l) do
-    if vowels.include?(str[i])
-      count += 1
-    end
+    count += 1 if vowels.include?(str[i])
   end
-  return count
+  count
 end
 
 def count_consonants(str)
   str = str.downcase
-  vowels = "bcdfghjklmnpqrstvwxz"
+  vowels = 'bcdfghjklmnpqrstvwxz'
   count = 0
   for i in (0..str.length - 1) do
-    if vowels.include?(str[i])
-      count += 1
-    end
+    count += 1 if vowels.include?(str[i])
   end
-  return count
+  count
 end
 
 def prime_number(number)
   for i in (2..number / 2)
-    if number % i == 0
-      return false
-    end
+    return false if number % i == 0
   end
-  return true
+  true
 end
 
 def fact(n)
   y = 1
   n.downto(2) {|i| y *= i}
-  return y
+  y
 end
 
 def fact_digits(n)
@@ -72,7 +66,7 @@ def fact_digits(n)
   sum = 0
   array.each {|z| sum += fact(z)}
 
-  return sum
+  sum
 end
 
 def fibonacci(n)
@@ -81,32 +75,39 @@ def fibonacci(n)
   for i in (2..n)
     fib_array[i] = (fib_array[i - 1]) + (fib_array[i - 2])
   end
-  return fib_array.take(n)
+  fib_array.take(n)
 end
 
 def fib_number(n)
   $a = 0
   fib = (fibonacci(n).map{|x| x = to_digits(x)}).flatten
+  fib.each {}
   for i in (0...fib.length)
     $a = fib[i] + ($a * 10)
   end
 
-  return $a
+  $a
 end
 
 def palindrome(m)
   n = m.to_s
   length = n.length
   for i in(0..length/2)
-    if n[i] != n[length - i - 1]
-      return false
-    end
+    return false if n[i] != n[length - i - 1]
   end
 
-  return true
+  true
 end
 
 def char_histogram(string)
   array = string.split(//)
   array.uniq.map { |x| [x, array.count(x)] }.to_h
+end
+
+def a(n, &block)
+  n_abs = n.abs
+  while n_abs > 0
+    block.call(n, a)
+    n_abs /= 10
+  end
 end
