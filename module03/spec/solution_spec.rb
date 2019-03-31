@@ -1,6 +1,6 @@
 require 'solution'
 
-describe 'solution-cashflow.rb' do
+describe 'solution.rb' do
     describe 'sum_of_digits' do
         it 'works per specification' do
             expect(sum_of_digits(1325132435356)).to eq(43)
