@@ -1,11 +1,11 @@
 def sum_of_digits(n)
   sum = 0
-  calc(n,sum, true)
+  calc(n,sum)
 end
 
 def to_digits(n)
   array=[]
-  calc(n, array,false ).reverse
+  calc(n, array).reverse
 end
 
 def to_number(digits)
@@ -68,10 +68,8 @@ def fibonacci(n)
 end
 
 def fib_number(n)
-  @a = 0
   fib = (fibonacci(n).map{|x| x = to_digits(x)}).flatten
-  fib.each {|x| @a = x + (@a * 10)}
-  @a
+  to_number(fib)
 end
 
 def palindrome(m)
@@ -92,15 +90,13 @@ def char_histogram(string)
   #a.uniq.to_h
 end
 
-
-def calc(n, a, sum_or_digit)
+def calc(n, a)
   n_abs = n.abs
-
   while n_abs > 0
-    if sum_or_digit==true
-      a += n_abs  % 10
-    else
+    if a.is_a?(Array)
       a.append(n_abs % 10)
+    else
+      a += n_abs  % 10
     end
     n_abs /= 10
   end
