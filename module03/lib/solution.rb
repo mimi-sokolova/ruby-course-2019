@@ -1,21 +1,11 @@
 def sum_of_digits(n)
   sum = 0
-  n_abs = n.abs
-  while n_abs > 0
-    sum = n_abs % 10
-    n_abs /= 10
-  end
-  sum
+  calc(n,sum, true)
 end
 
 def to_digits(n)
-  array = []
-  n_abs = n.abs
-  while n_abs > 0
-    array.append(n_abs % 10)
-    n_abs /= 10
-  end
-  array.reverse
+  array=[]
+  calc(n, array,false ).reverse
 end
 
 def to_number(digits)
@@ -23,7 +13,7 @@ def to_number(digits)
   for i in (0...digits.length)
     n = digits[i] + (n * 10)
   end
-  n
+   n
 end
 
 def count_vowels(str)
@@ -65,7 +55,6 @@ def fact_digits(n)
   array = to_digits(n)
   sum = 0
   array.each {|z| sum += fact(z)}
-
   sum
 end
 
@@ -79,14 +68,10 @@ def fibonacci(n)
 end
 
 def fib_number(n)
-  $a = 0
+  @a = 0
   fib = (fibonacci(n).map{|x| x = to_digits(x)}).flatten
-  fib.each {}
-  for i in (0...fib.length)
-    $a = fib[i] + ($a * 10)
-  end
-
-  $a
+  fib.each {|x| @a = x + (@a * 10)}
+  @a
 end
 
 def palindrome(m)
@@ -102,12 +87,22 @@ end
 def char_histogram(string)
   array = string.split(//)
   array.uniq.map { |x| [x, array.count(x)] }.to_h
+  #a = []
+  #array.each {|x| a.append([x, array.count(x)])}
+  #a.uniq.to_h
 end
 
-def a(n, &block)
+
+def calc(n, a, sum_or_digit)
   n_abs = n.abs
+
   while n_abs > 0
-    block.call(n, a)
+    if sum_or_digit==true
+      a += n_abs  % 10
+    else
+      a.append(n_abs % 10)
+    end
     n_abs /= 10
   end
+   a
 end
