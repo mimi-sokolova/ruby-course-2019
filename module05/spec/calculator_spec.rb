@@ -41,20 +41,30 @@ describe 'Calculator' do
     expect(@calculator.multiply([2, 4, 8, 10], 2)).to eq([2, 4, 8, 10, 2, 4, 8, 10])
   end
 
-  it '.divide x and y  ' do
+  it '.divide x and y as integers' do
     expect(@calculator.divide(8, 2)).to eq(4)
   end
 
-  it '.divide x and y with float result' do
+  it '.divide float x  with  y integer' do
     expect(@calculator.divide(9.81, 9)).to eq(1.09)
-  end
-
-  it '.divide x and y with float result' do
     expect(@calculator.divide(9.87, 3)).to eq(3.2899999999999996)
   end
 
-  it '.divide x with extra symbols and y   ' do
+
+  it '.divide x with extra symbols and y' do
     expect(@calculator.divide('72 free donuts', 9)).to eq(8.0)
+    expect(@calculator.divide('122 one hundred twenty two ', 2)).to eq(61.0)
   end
 
+  it '.divide x with zero' do
+    expect(@calculator.divide(89, 0)).to eq(Float::INFINITY)
+  end
+
+  it '.divide big number' do
+    expect(@calculator.divide(17438484848474576575757576654444, 4)).to eq(4.3596212121186444e+30)
+  end
+
+  it '.divide no Numeric types of Data ' do
+    expect(@calculator.divide("Lolalola", "Abigeil")).to raise_error(TypeError)
+  end
 end
