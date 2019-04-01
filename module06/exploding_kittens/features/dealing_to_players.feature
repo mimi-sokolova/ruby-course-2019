@@ -6,23 +6,23 @@ Feature: Dealing cards to players
     Then 2 players have 4 cards each
     And Deck has 38 cards left
 
-  Scenario : Dealing for a game with thre players
+  Scenario : Dealing for a game with three players
     Given 3 players want to play Exp.Kittens
     When player deals the cards from the deck
     Then 3 players have 4 cards each
     And Deck has 34 cards left
 
-  Scenario : Dealing for a game with thre players
-    Given 3 players want to play Exp.Kittens
+  Scenario : Dealing for a game with four players
+    Given 4 players want to play Exp.Kittens
     When player deals the cards from the deck
     Then 3 players have 4 cards each
-    And Deck has 34 cards left
+    And Deck has 30 cards left
 
-  Scenario : Dealing for a game with thre players
-    Given 3 players want to play Exp.Kittens
+  Scenario : Dealing for a game with five players
+    Given 5 players want to play Exp.Kittens
     When player deals the cards from the deck
-    Then 3 players have 4 cards each
-    And Deck has 34 cards left
+    Then 5 players have 4 cards each
+    And Deck has 26 cards left
 
   Scenario : Dealing for a game with six players
     Given 3 players want to play Exp.Kittens
