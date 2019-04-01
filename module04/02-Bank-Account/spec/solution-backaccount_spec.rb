@@ -67,27 +67,27 @@ describe BankAccount do
     end
 #--------------------------------------------------------------------------
     it '.transfer_to() should work per specification' do
-        @lara_account.transfer_to(@bobo_acount, 345)
+        @lara_account.transfer_to(@bobo_acount,345)
         expect(@bobo_acount.balance).to eq(345)
         expect(@lara_account.balance).to eq(655)
     end
 
     it '.transfer_to() with  different currencies ' do
         receiver = BankAccount.new('receiver', 0, '%')
-        expect(@lara_account.transfer_to(receiver, 22)).to eq(false)
-        expect(@lara_account.transfer_to(receiver, 22)).not_to change{@lara_account.balance}
-        expect(@lara_account.transfer_to(receiver, 22)).not_to change{receiver.balance}
+        expect(@lara_account.transfer_to(receiver,22)).to eq(false)
+        expect(@lara_account.balance).to eq(1000)
+        expect(receiver.balance).to eq(0)
     end
 
     it '.transfer_to() with not enough money for the transfer' do
         sender = BankAccount.new('sender', 10 , '$')
         receiver = BankAccount.new('receiver', 0, '$')
 
-        expect(sender.transfer_to(receiver, 22)).to eq(false)
+        expect(sender.transfer_to(receiver,22)).to eq(false)
     end
 
     it '.transfer_to() a negative transfer ' do
-        expect(@lara_account.transfer_to(@bobo_acount, -22)).to raise_error(ArgumentError, 'You can not deposit a negative number')
+        expect{@lara_account.transfer_to(@bobo_acount,-22)}.to raise_error(ArgumentError,'You can not deposit a negative number')
     end
 
 end
