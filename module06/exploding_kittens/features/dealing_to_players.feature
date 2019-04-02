@@ -1,37 +1,27 @@
 Feature: Dealing cards to players
 
-  Scenario : Dealing for a game with two players
-    Given 2 players want to play Exp.Kittens
+  Scenario Outline: Dealing for a game  with 2 to 5 players
+    Given "<players_num>" players want to play Exploding Kittens
     When player deals the cards from the deck
     Then 2 players have 4 cards each
-    And Deck has 38 cards left
+    And Deck has "<cards_left>" cards left
 
-  Scenario : Dealing for a game with three players
-    Given 3 players want to play Exp.Kittens
-    When player deals the cards from the deck
-    Then 3 players have 4 cards each
-    And Deck has 34 cards left
+    Examples:
+      | players_num | cards_left  |
+      | 2           | 38          |
+      | 3           | 34          |
+      | 4           | 30          |
+      | 5           | 26          |
 
-  Scenario : Dealing for a game with four players
-    Given 4 players want to play Exp.Kittens
-    When player deals the cards from the deck
-    Then 3 players have 4 cards each
-    And Deck has 30 cards left
-
-  Scenario : Dealing for a game with five players
-    Given 5 players want to play Exp.Kittens
-    When player deals the cards from the deck
-    Then 5 players have 4 cards each
-    And Deck has 26 cards left
 
   Scenario : Dealing for a game with six players
-    Given 3 players want to play Exp.Kittens
-    When player deals the cards from the deck
+    Given 6 players want to play Exploding Kittens
+    When player starts dealing
     Then Error is returned "The maximum number of players is 5! Remove one player"
 
 
   Scenario : Dealing for a game with one players
-    Given 3 players want to play Exp.Kittens
-    When player deals the cards from the deck
+    Given 1 players want to play Exploding Kittens
+    When player starts dealing
     Then Error is returned "The minimum number of players is 2! Find a friend"
 
