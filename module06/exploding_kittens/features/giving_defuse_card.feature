@@ -1,4 +1,5 @@
-Feature: Dealing cards to players
+Feature: Giving Defuse cards to each player
+  and putting the rest in the deck
 
   Scenario : Giving each player Defuse card for a game of 2
     Given 2 players are playing Exploding Kittens
