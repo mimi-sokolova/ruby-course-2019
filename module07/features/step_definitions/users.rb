@@ -2,10 +2,8 @@ require 'rest-client'
 require 'json'
 require 'rspec'
 
-ACCESS_TOKEN = '6b307a0b2abe237a1e51bf64335cb6b82cb47336'.freeze
-URL = 'https://api.github.com'.freeze
 
-Given (/^user '(.*?)'/) do |user_name|
+Given(/^user '(.*?)'/) do |user_name|
   @user_name = user_name
 end
 
