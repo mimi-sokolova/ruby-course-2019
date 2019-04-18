@@ -23,7 +23,7 @@ Then(/^hireability status should be '(.*?)'/) do |hireable|
     @hireable = @user_info['hireable']
     expect(@hireable.to_s).to eq(hireable)
   else
-    expect(@user_info).should_not include("hireable")
+    expect(@user_info).to include(a_hash_including('hireable'))
   end
 end
 
@@ -33,10 +33,10 @@ Then(/^living location should be '(.*?)'/) do |current_location|
 end
 
 Then (/^users is member of '(.*?)' organisation/) do |organisation|
-@user_organisations.each{|org| if org['login'] == 'weldr'
-                                   @check = true
-                               end}
-
+  @user_organisations.each{|org|
+    @org_info= org if org['login'] == organisation
+  }
+  expect(@org_info['login']).to eq(organisation)
 end
 
 

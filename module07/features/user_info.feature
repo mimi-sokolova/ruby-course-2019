@@ -7,14 +7,14 @@ Feature: Checking user public information without authentication
 
     Examples:
       | username | hireability_status  |
-      | atodorov | true           |
-      | apetkova | false          |
+      | atodorov | true                |
+      | apetkova | false               |
 
 
   Scenario:
     Given user 'atodorov'
     When get user info
-    Then living location should be 'Sofia'
+    Then living location should be 'Sofia, Bulgaria'
 
   Scenario:
     Given user 'atodorov'
